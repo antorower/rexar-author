@@ -8,7 +8,7 @@ const Form = ({ title, subtitle, icon, onSubmit, children, className, buttonText
       <FormTitle icon={icon} title={title} subtitle={subtitle} />
       <form onSubmit={onSubmit} className={`space-y-8 bg-white ${className}`}>
         {children}
-        <button type="submit" className="w-full px-4 py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white text-base font-medium rounded-md shadow-sm transition sticky bottom-4">
+        <button type="submit" className="w-full px-4 py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white text-base font-medium rounded-md shadow-sm transition">
           {buttonText || "Υποβολή"}
         </button>
       </form>

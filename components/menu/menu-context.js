@@ -2,22 +2,22 @@
 
 import { createContext, useContext } from "react";
 import { usePathname } from "next/navigation";
-import { BookOpen, LayoutDashboard, FileText, Settings, Sparkles } from "lucide-react";
+import { BookOpen, LayoutDashboard, FileText, Settings, Sparkles, LibraryBig } from "lucide-react";
 
 const NavigationContext = createContext(null);
 
 export const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/" },
-  { icon: BookOpen, label: "My eBooks", href: "/books" },
-  //{ icon: Sparkles, label: "AI Assistant", href: "/ai" },
-  { icon: Settings, label: "Settings", href: "/settings" },
+  { icon: LayoutDashboard, label: "Γραφείο", href: "/" },
+  { icon: BookOpen, label: "Νέο Βιβλίο", href: "/create" },
+  { icon: LibraryBig, label: "Βιβλιοθήκη", href: "/books" },
+  { icon: Settings, label: "Ρυθμίσεις", href: "/settings" },
 ];
 
 function getActiveLabelFromPath(pathname) {
-  if (pathname === "/") return "Dashboard";
-  if (pathname.startsWith("/books")) return "My eBooks";
-  if (pathname.startsWith("/ai")) return "AI Assistant";
-  if (pathname.startsWith("/settings")) return "Settings";
+  if (pathname === "/") return "Γραφείο";
+  if (pathname.startsWith("/create")) return "Νέο Βιβλίο";
+  if (pathname.startsWith("/books")) return "Βιβλιοθήκη";
+  if (pathname.startsWith("/settings")) return "Ρυθμίσεις";
   return "";
 }
 

@@ -54,28 +54,30 @@ export default function Page() {
   };
 
   return (
-    <div>
+    <div className="mx-auto max-w-[1000px] pb-8">
       <Form title="Δημιουργία Νέου Βιβλίου" subtitle="Δημιούργησε ένα νέο βιβλίο" icon={<BookOpen className="h-5 w-5 text-blue-600" />} onSubmit={SaveBook} buttonText="Δημιουργία">
         <SelectInput value={category} onChange={setCategory} name="category" label="Κατηγορία" options={CATEGORIES} />
         <TextInput value={title} onChange={setTitle} placeholder="Τίτλος" name="title" label="Τίτλος" maxLength={100} />
-        <TextArea value={description} onChange={setDescription} placeholder="Περιγραφή" name="description" label="Περιγραφή" maxLength={750} />
-        <div className="flex justify-end gap-4">
-          <button type="button" onClick={ClearDescription} className="border cursor-pointer border-red-300 bg-red-500 px-3 py-2 rounded-md text-white">
-            Καθαρισμός
-          </button>
-          <button type="button" onClick={AddDescription} className="border cursor-pointer border-green-300 bg-green-500 px-3 py-2 rounded-md text-white">
-            Προσθήκη
-          </button>
-        </div>
-        {descriptions.length > 0 && (
-          <div className="space-y-2 border p-4 rounded-lg bg-gray-50">
-            {descriptions.map((part, index) => (
-              <div key={`description-${index}`} className="text-xs">
-                {part}
-              </div>
-            ))}
+        <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg space-y-8">
+          <TextArea value={description} onChange={setDescription} placeholder="Περιγραφή" name="description" label="Περιγραφή" maxLength={750} />
+          {descriptions.length > 0 && (
+            <div className="space-y-2 border p-4 rounded-lg bg-white">
+              {descriptions.map((part, index) => (
+                <div key={`description-${index}`} className="text-xs">
+                  {part}
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="flex justify-end gap-4">
+            <button type="button" onClick={ClearDescription} className="border cursor-pointer border-gray-300 bg-white text-gray-700 px-3 py-2 rounded-md">
+              Καθαρισμός
+            </button>
+            <button type="button" onClick={AddDescription} className="border cursor-pointer border-green-700 bg-green-600 px-3 py-2 rounded-md text-white">
+              Προσθήκη
+            </button>
           </div>
-        )}
+        </div>
         <TextArea value={contentPrompt} onChange={setContentPrompt} placeholder="Prompt Περιεχομένων" name="contentPrompt" label="Prompt Περιεχομένων" maxLength={5000} />
         <TextArea value={lessonPrompt} onChange={setLessonPrompt} placeholder="Prompt Μαθημάτων" name="lessonPrompt" label="Prompt Μαθημάτων" maxLength={5000} />
       </Form>

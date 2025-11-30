@@ -1,26 +1,28 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { BookOpen, TrendingUp, Users, FileText } from "lucide-react";
+import { TotalBooks } from "@/lib/cache-functions";
+import { TotalBooksThisMonth } from "@/lib/cache-functions";
+import { GetCurrentUser } from "@/lib/cache-functions";
+import Link from "next/link";
 
-const stats = [
-  { icon: BookOpen, label: "Total eBooks", value: "12", change: "+2 this month", color: "from-primary to-accent" },
-  { icon: Users, label: "Total Readers", value: "2,543", change: "+18% this month", color: "from-accent to-primary" },
-  { icon: FileText, label: "Drafts", value: "5", change: "3 ready to publish", color: "from-primary to-accent" },
-  { icon: TrendingUp, label: "Revenue", value: "$4,321", change: "+23% this month", color: "from-accent to-primary" },
-];
+const Stats = async () => {
+  const totalBooks = await TotalBooks();
+  const totalBooksThisMonth = await TotalBooksThisMonth();
 
-export default function Home() {
+  return [
+    { icon: BookOpen, label: "Total eBooks", value: totalBooks, change: totalBooksThisMonth > 0 ? `+${totalBooksThisMonth} αυτόν τον μήνα` : "κανένα αυτόν τον μήνα", color: "from-primary to-accent" },
+    { icon: Users, label: "Total Readers", value: "2,543", change: "+18% this month", color: "from-accent to-primary" },
+    { icon: FileText, label: "Drafts", value: "5", change: "3 ready to publish", color: "from-primary to-accent" },
+    { icon: TrendingUp, label: "Revenue", value: "$4,321", change: "+23% this month", color: "from-accent to-primary" },
+  ];
+};
+
+export default async function Home() {
+  const stats = await Stats();
+  const user = await GetCurrentUser();
+
   return (
-    <>
-      {/* Header */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">Welcome back, John 👋</h1>
-        <p className="text-muted-foreground text-lg">{"Here's what's happening with your ebooks today"}</p>
-      </motion.div>
-
-      {/* Stats Grid */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
@@ -38,18 +40,20 @@ export default function Home() {
             </div>
           );
         })}
-      </motion.div>
+      </div>
 
-      {/* Placeholder Content Area */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-card border border-border rounded-2xl p-8 min-h-[400px] flex items-center justify-center">
+      <div className="bg-card border border-border rounded-2xl p-8 flex flex-col gap-4 items-center justify-center">
         <div className="text-center space-y-4">
           <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-primary to-accent mx-auto flex items-center justify-center">
             <BookOpen className="w-8 h-8 text-white" />
           </div>
-          <h3 className="text-xl font-semibold text-foreground">Δημιουργία Περιεχομένου</h3>
-          <p className="text-muted-foreground max-w-md">Δημιούργησε το δικό σου learning path ή δόμησε ένα από τα υφιστάμενα learning blocks</p>
+          <div className="text-xl font-semibold text-foreground">Δημιουργία Βιβλίου</div>
+          <div className="text-muted-foreground max-w-md">Ήξερες ότι μπορείς να δημιουργείς τα δικά σου βιβλία εντελώς δωρεάν και να βγάζεις χρήματα από αυτά;</div>
         </div>
-      </motion.div>
-    </>
+        <Link href="/create" className="bg-blue-600 px-6 py-4 text-white rounded-md hover:bg-blue-700 transition-colors">
+          Δημιουργία Νέου Βιβλίου
+        </Link>
+      </div>
+    </div>
   );
 }

@@ -80,11 +80,13 @@ const BookSchema = new mongoose.Schema(
       type: String,
       minlength: 50,
       maxlength: 6000,
+      select: false,
     },
     lessonPrompt: {
       type: String,
       minlength: 50,
       maxlength: 6000,
+      select: false,
     },
   },
   {
