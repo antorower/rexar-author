@@ -44,7 +44,7 @@ export default function Page() {
   const SaveBook = async (e) => {
     e.preventDefault();
 
-    await CreateBook({
+    const response = await CreateBook({
       data: {
         title,
         description,
@@ -55,6 +55,15 @@ export default function Page() {
         lessonPrompt,
       },
     });
+
+    if (response.success) {
+      setTitle("");
+      setDescription("");
+      setCategory("");
+      setSubcategory("");
+      setContentPrompt("");
+      setLessonPrompt("");
+    }
   };
 
   return (

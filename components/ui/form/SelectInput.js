@@ -1,6 +1,6 @@
 "use client";
 
-const SelectInput = ({ value, onChange, onFocus, onBlur, name, label, placeholder = "Select...", options = [] }) => {
+const SelectInput = ({ value, onChange, onFocus, onBlur, name, label, placeholder = "Επιλογή...", options = [] }) => {
   const displayPlaceholder = !value;
 
   return (
