@@ -12,7 +12,7 @@ const CATEGORIES = ["Επιχειρηματικότητα", "Οικονομικ�
 export default function Page() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState();
-  const [descriptions, setDescriptions] = useState(["dafds"]);
+  const [descriptions, setDescriptions] = useState([]);
   const [category, setCategory] = useState("");
   const [contentPrompt, setContentPrompt] = useState("");
   const [lessonPrompt, setLessonPrompt] = useState("");
@@ -76,8 +76,8 @@ export default function Page() {
             ))}
           </div>
         )}
-        <TextArea value={contentPrompt} onChange={setContentPrompt} placeholder="Prompt Περιεχομένων" name="contentPrompt" label="Prompt Περιεχομένων" maxLength={2000} />
-        <TextArea value={lessonPrompt} onChange={setLessonPrompt} placeholder="Prompt Μαθημάτων" name="lessonPrompt" label="Prompt Μαθημάτων" maxLength={2000} />
+        <TextArea value={contentPrompt} onChange={setContentPrompt} placeholder="Prompt Περιεχομένων" name="contentPrompt" label="Prompt Περιεχομένων" maxLength={5000} />
+        <TextArea value={lessonPrompt} onChange={setLessonPrompt} placeholder="Prompt Μαθημάτων" name="lessonPrompt" label="Prompt Μαθημάτων" maxLength={5000} />
       </Form>
     </div>
   );
