@@ -79,12 +79,12 @@ const BookSchema = new mongoose.Schema(
     contentPrompt: {
       type: String,
       minlength: 50,
-      maxlength: 1000,
+      maxlength: 2000,
     },
     lessonPrompt: {
       type: String,
       minlength: 50,
-      maxlength: 1000,
+      maxlength: 2000,
     },
   },
   {
