@@ -1,5 +1,6 @@
 import { Roboto } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { NavigationProvider } from "@/components/menu/menu-context";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -18,7 +19,11 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="el" className={`${roboto.className}`}>
-        <body className={`font-roboto antialiased`}>{children}</body>
+        <body className={`font-roboto antialiased`}>
+          <NavigationProvider>
+            <div>{children}</div>
+          </NavigationProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
