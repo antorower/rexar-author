@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ChapterSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   clerkId: {
     type: String,
     required: true,
@@ -16,4 +16,4 @@ const ChapterSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.Chapter || mongoose.model("Chapter", ChapterSchema);
+export default mongoose.models.User || mongoose.model("User", UserSchema);
