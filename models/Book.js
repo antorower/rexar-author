@@ -20,13 +20,15 @@ const BookSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
-    description: {
-      type: String,
-      maxlength: 800,
-      minlength: 2,
-      trim: true,
-      required: true,
-    },
+    description: [
+      {
+        type: String,
+        maxlength: 800,
+        minlength: 2,
+        trim: true,
+        required: true,
+      },
+    ],
     cover: String,
 
     lessons: [String],
@@ -39,11 +41,6 @@ const BookSchema = new mongoose.Schema(
     },
 
     category: {
-      type: String,
-      trim: true,
-      required: true,
-    },
-    subcategory: {
       type: String,
       trim: true,
       required: true,
