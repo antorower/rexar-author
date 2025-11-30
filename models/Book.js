@@ -8,6 +8,11 @@ const BookSchema = new mongoose.Schema(
       ref: "Book",
     },
 
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+
     title: {
       type: String,
       maxlength: 105,
