@@ -26,6 +26,11 @@ const SUBCATEGORIES = {
   Μάθηση: ["Μελέτη", "Σημειώσεις", "Ταχύτητα Μάθησης", "Μνήμη", "Εστίαση", "Skills Upgrading", "Διάβασμα", "Κατανόηση", "Μεθοδολογία Μάθησης"],
 };
 
+const LANGUAGES = [
+  { label: "Greek", value: "el" },
+  { label: "Enligsh", value: "en" },
+];
+
 export default function Page() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -33,6 +38,7 @@ export default function Page() {
   const [subcategory, setSubcategory] = useState("");
   const [contentPrompt, setContentPrompt] = useState("");
   const [lessonPrompt, setLessonPrompt] = useState("");
+  const [language, setLanguage] = useState("");
 
   const subcategoryOptions = category && SUBCATEGORIES[category] ? SUBCATEGORIES[category] : [];
 
@@ -70,9 +76,8 @@ export default function Page() {
     <div>
       <Form title="Δημιουργία Νέου Βιβλίου" subtitle="Δημιούργησε ένα νέο βιβλίο" icon={<BookOpen className="h-5 w-5 text-blue-600" />} onSubmit={SaveBook} buttonText="Δημιουργία">
         <SelectInput value={category} onChange={handleCategoryChange} name="category" label="Κατηγορία" options={CATEGORIES} />
-
         <SelectInput value={subcategory} onChange={setSubcategory} name="subcategory" label="Υποκατηγορία" options={subcategoryOptions} disabled={!category} />
-
+        <SelectInput value={language} onChange={setLanguage} name="language" label="Γλώσσα" options={LANGUAGES} />
         <TextInput value={title} onChange={setTitle} placeholder="Τίτλος" name="title" label="Τίτλος" maxLength={100} />
         <TextArea value={description} onChange={setDescription} placeholder="Περιγραφή" name="description" label="Περιγραφή" maxLength={750} />
         <TextArea value={contentPrompt} onChange={setContentPrompt} placeholder="Prompt Περιεχομένων" name="contentPrompt" label="Prompt Περιεχομένων" maxLength={900} />

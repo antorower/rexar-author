@@ -13,6 +13,11 @@ const BookSchema = new mongoose.Schema(
       ref: "User",
     },
 
+    language: {
+      type: String,
+      enum: ["el", "en"],
+    },
+
     title: {
       type: String,
       maxlength: 105,

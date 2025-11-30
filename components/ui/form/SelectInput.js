@@ -14,8 +14,8 @@ const SelectInput = ({ value, onChange, onFocus, onBlur, name, label, placeholde
           </option>
 
           {options.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
+            <option key={opt.label || opt} value={opt.value || opt}>
+              {opt.label || opt}
             </option>
           ))}
         </select>
